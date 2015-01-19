@@ -20,8 +20,11 @@ public class ChangeLevelOfTotes extends Command {
 		liftPID = Robot.commandBase.chainLiftSubsystem.pid;
 		if (up) {
 			Robot.commandBase.chainLiftSubsystem.setpointHeight += ChainLiftSubsystem.PIDConstants.STORE_TO_NEXT_LEVEL_DIFFRERANCE;
+			System.out.println("going up");
 		} else {
 			Robot.commandBase.chainLiftSubsystem.setpointHeight += ChainLiftSubsystem.PIDConstants.STORE_TO_NEXT_LEVEL_DIFFRERANCE;
+			System.out.println("heading down");
+
 		}
 	}
 
@@ -29,6 +32,7 @@ public class ChangeLevelOfTotes extends Command {
 	protected void initialize() {
 		liftPID.enable();
 		liftPID.setSetpoint(Robot.commandBase.chainLiftSubsystem.setpointHeight + Robot.commandBase.chainLiftSubsystem.offsetHeight);
+		System.out.println("PID Setpoint Set");
 	}
 
 	// Called repeatedly when this Command is scheduled to run

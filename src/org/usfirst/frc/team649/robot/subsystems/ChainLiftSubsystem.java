@@ -29,10 +29,10 @@ public class ChainLiftSubsystem extends PIDSubsystem {
 	
 	public static class PIDConstants {
 		//PID
-		public static final double LIFT_P_VALUE = 0.0;
-		public static final double LIFT_I_VALUE = 0.0;
-		public static final double LIFT_D_VALUE = 0.0;
-		public static final double ENCODER_DISTANCE_PER_PULSE = 0;
+		public static final double LIFT_P_VALUE = 0.5;
+		public static final double LIFT_I_VALUE = 0.2;
+		public static final double LIFT_D_VALUE = 0.3;
+		public static final double ENCODER_DISTANCE_PER_PULSE = 42;
 		public static final double ABS_TOLERANCE = 0;
 		//In inches
 		public static final double STORE_TO_STEP_LEVEL_DIFFRERANCE = 5.0;
@@ -72,6 +72,7 @@ public class ChainLiftSubsystem extends PIDSubsystem {
         for (int i =0; i < motors.length; i++) {
             motors[i].set(power);
         }
+        System.out.println("Power Set");
     }
     
     public boolean isMaxLimitPressed() {

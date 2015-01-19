@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team649.robot;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -70,7 +72,7 @@ public static CommandBase commandBase = new CommandBase();
         	commandBase.changeLevelOfTotes(true).start();
         	SmartDashboard.putString("pressed?", "yes");
         }
-        
+        SmartDashboard.putNumber("Encoder Val", commandBase.chainLiftSubsystem.getHeight());
         //SmartDashboard.putString("pressed", "no");
     }
     
