@@ -16,11 +16,16 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	public static final int JOYSTICK_OPERATOR = 1;
-
+	public static final class JOYSTICKS{
+		public static int JOYSTICK_OPERATOR = 2;
+		public static int JOYSTICK_DRIVER_LEFT = 0;
+		public static int JOYSTICK_DRIVER_RIGHT = 1;
+	}
+	
 	public static final class DRIVE_TRAIN {
-		public static final int[] MOTORS = new int[] {1,2,3,4};
-        public static final int[] ENCODERS = new int[]{3, 4, 6, 7};
+		public static final int[] MOTORS = new int[] {7,6,5,4};
+        public static final int[] ENCODERS = new int[]{0, 1, 2, 3};
+        public static final int GRYO = 0;
 
 	}
 	

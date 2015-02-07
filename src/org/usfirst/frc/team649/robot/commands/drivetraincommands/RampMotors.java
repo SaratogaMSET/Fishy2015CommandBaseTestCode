@@ -1,37 +1,39 @@
-package org.usfirst.frc.team649.robot.commands.lift;
+package org.usfirst.frc.team649.robot.commands.drivetraincommands;
 
-import org.usfirst.frc.team649.robot.Robot;
-import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem;
+import org.usfirst.frc.team649.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ScoreAllTotesAndResetEncoders extends Command {
+public class RampMotors extends Command {
 
-    public ScoreAllTotesAndResetEncoders() {
+	double inputVal; 
+	double outputVal;
+    public RampMotors() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    // = org.usfirst.frc.team649.robot.FishyRobot2015.commandBase.drivetrainSubsystem.currentInput;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.commandBase.chainLiftSubsystem.setPower(ChainLiftSubsystem.PIDConstants.UNLOAD_TOTES_MOTOR_POWER);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.commandBase.chainLiftSubsystem.isResetLimitPressed();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.commandBase.chainLiftSubsystem.resetEncoders();
     }
 
     // Called when another command which requires one or more of the same

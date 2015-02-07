@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team649.robot.commands.CommandBase;
-import org.usfirst.frc.team649.robot.commands.lift.ChangeLevelOfTotes;
-import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -68,12 +66,17 @@ public static CommandBase commandBase = new CommandBase();
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        if(commandBase.oi.operator.isLowerToteButtonPressed()) {
-        	commandBase.changeLevelOfTotes(true).start();
-        	SmartDashboard.putString("pressed?", "yes");
+        commandBase.driveForwardRotate(commandBase.oi.driver.getDriveForward(), commandBase.oi.driver.getDriveRotation()).start();
+        if(commandBase.oi.operator.isIntakeButtonPressed()) {
+        	commandBase.turnWithPIDCommand(90).start();
         }
-        SmartDashboard.putNumber("Encoder Val", commandBase.chainLiftSubsystem.getHeight());
-        //SmartDashboard.putString("pressed", "no");
+        if(commandBase.oi.operator.isScoreAllButtonPressed()) {
+        	commandBase.driveForwardRotate(1, 0).start();
+        }
+        if(commandBase.oi.operator.isStepButtonPressed()) {
+        	commandBase.driveSetDistanceWithPID(12);
+        }
+        SmartDashboard.putNumber("Gyro", commandBase.drivetrainSubsystem.gyro.getAngle());
     }
     
     /**

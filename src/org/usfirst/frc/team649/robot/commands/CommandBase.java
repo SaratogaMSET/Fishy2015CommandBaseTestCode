@@ -1,10 +1,10 @@
 package org.usfirst.frc.team649.robot.commands;
 
 import org.usfirst.frc.team649.robot.OI;
-import org.usfirst.frc.team649.robot.commands.lift.ChangeLevelOfTotes;
-import org.usfirst.frc.team649.robot.commands.lift.ChangeOffsetHeight;
-import org.usfirst.frc.team649.robot.commands.lift.ScoreAllTotesAndResetEncoders;
-import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem;
+import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveForwardRotate;
+import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveSetDistanceWithPID;
+import org.usfirst.frc.team649.robot.commands.drivetraincommands.TurnWithPIDCommand;
+import org.usfirst.frc.team649.robot.subsystems.DrivetrainSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,22 +14,22 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase {
 
 	public OI oi = new OI();
-	public ChainLiftSubsystem chainLiftSubsystem = new ChainLiftSubsystem();
-
+	//public ChainLiftSubsystem chainLiftSubsystem = new ChainLiftSubsystem();
+	public DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
+	
 	public CommandBase() {
 
 	}
 
-	public Command changeLevelOfTotes(boolean up) {
-		return new ChangeLevelOfTotes(up);
+	public Command driveForwardRotate(double fwd, double rot) {
+		return new DriveForwardRotate(fwd, rot);
 	}
-
-	public Command changeOffsetHeight(boolean storeHeight) {
-		return new ChangeOffsetHeight(storeHeight);
+	
+	public Command turnWithPIDCommand(double setPoint) {
+		return new TurnWithPIDCommand(setPoint);
 	}
-
-	public Command scoreAllTotesAndResetEncoders() {
-		return new ScoreAllTotesAndResetEncoders();
+	
+	public Command driveSetDistanceWithPID(double distance) {
+		return new DriveSetDistanceWithPID(distance);
 	}
-
 }
