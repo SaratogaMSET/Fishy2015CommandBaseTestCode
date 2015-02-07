@@ -6,6 +6,7 @@ import org.usfirst.frc.team649.robot.subsystems.DrivetrainSubsystem;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -29,6 +30,7 @@ public class DriveSetDistanceWithPID extends Command {
 	 *            The distance in inches to drive. Negative to drive backwards.
 	 */
 	public DriveSetDistanceWithPID(double distance) {
+		System.out.println("called level 2");
 		this.distance = distance;
 		this.minDriveSpeed = 0.25;
 	}
@@ -49,9 +51,9 @@ public class DriveSetDistanceWithPID extends Command {
 	protected void initialize() {
 		// Display.printToOutputStream("starting drive PID: " +
 		// DriverStation.getInstance().getMatchTime() + ", dist: " + distance);
+		System.out.println("Yas");
 		DrivetrainSubsystem.EncoderBasedDriving.MIN_MOTOR_POWER = minDriveSpeed;
-		this.pid = org.usfirst.frc.team649.robot.Robot.commandBase.drivetrainSubsystem
-				.getPIDController();
+		this.pid = org.usfirst.frc.team649.robot.Robot.commandBase.drivetrainSubsystem.encoderPID;
 		pid.setPID(DrivetrainSubsystem.EncoderBasedDriving.AUTO_P,
 				DrivetrainSubsystem.EncoderBasedDriving.AUTO_I,
 				DrivetrainSubsystem.EncoderBasedDriving.AUTO_D);
@@ -59,6 +61,7 @@ public class DriveSetDistanceWithPID extends Command {
 		org.usfirst.frc.team649.robot.Robot.commandBase.drivetrainSubsystem.resetEncoders();
 		// drivetrainSubsystem.startEncoders();
 		pid.enable();
+		pid.startLiveWindowMode();
 		onTargetStartTime = -1;
 	}
 

@@ -24,6 +24,8 @@ public class RobotMap {
 	
 	public static final class DRIVE_TRAIN {
 		public static final int[] MOTORS = new int[] {7,6,5,4};
+		// indexes 0,1 are right side
+		//indexes 2,3 are left side
         public static final int[] ENCODERS = new int[]{0, 1, 2, 3};
         public static final int GRYO = 0;
 

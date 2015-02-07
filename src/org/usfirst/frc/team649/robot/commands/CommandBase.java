@@ -30,6 +30,7 @@ public class CommandBase {
 	}
 	
 	public Command driveSetDistanceWithPID(double distance) {
+		System.out.println("called level 1");
 		return new DriveSetDistanceWithPID(distance);
 	}
 }

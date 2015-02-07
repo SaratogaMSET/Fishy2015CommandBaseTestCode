@@ -66,7 +66,7 @@ public static CommandBase commandBase = new CommandBase();
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        commandBase.driveForwardRotate(commandBase.oi.driver.getDriveForward(), commandBase.oi.driver.getDriveRotation()).start();
+       // commandBase.driveForwardRotate(commandBase.oi.driver.getDriveForward(), commandBase.oi.driver.getDriveRotation()).start();
         if(commandBase.oi.operator.isIntakeButtonPressed()) {
         	commandBase.turnWithPIDCommand(90).start();
         }
@@ -74,9 +74,11 @@ public static CommandBase commandBase = new CommandBase();
         	commandBase.driveForwardRotate(1, 0).start();
         }
         if(commandBase.oi.operator.isStepButtonPressed()) {
-        	commandBase.driveSetDistanceWithPID(12);
+        	commandBase.driveSetDistanceWithPID(120).start();
         }
         SmartDashboard.putNumber("Gyro", commandBase.drivetrainSubsystem.gyro.getAngle());
+        SmartDashboard.putNumber("Enc right", commandBase.drivetrainSubsystem.encoders[0].getDistance());
+        SmartDashboard.putNumber("Enc left", commandBase.drivetrainSubsystem.encoders[1].getDistance());
     }
     
     /**
