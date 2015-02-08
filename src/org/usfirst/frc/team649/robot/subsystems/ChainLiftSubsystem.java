@@ -1,14 +1,18 @@
 package org.usfirst.frc.team649.robot.subsystems;
 
-import java.awt.Robot;
+import org.usfirst.frc.team649.robot.FishyRobot2015;
 import org.usfirst.frc.team649.robot.RobotMap;
+import org.usfirst.frc.team649.robot.subsystems.DrivetrainSubsystem.EncoderBasedDriving;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
@@ -52,13 +56,11 @@ public class ChainLiftSubsystem extends PIDSubsystem {
 
 	public ChainLiftSubsystem() {
 		super("Lift PID", PIDConstants.P_VALUE, PIDConstants.I_VALUE, PIDConstants.D_VALUE);
-	 	motors = new Victor[RobotMap.CHAIN_LIFT.MOTORS.length];
+		motors = new Victor[RobotMap.CHAIN_LIFT.MOTORS.length];
 		for (int i = 0; i < RobotMap.CHAIN_LIFT.MOTORS.length; i++) {
             motors[i] = new Victor(RobotMap.CHAIN_LIFT.MOTORS[i]);
         }
-    	pid = this.getPIDController();
-    	pid.setAbsoluteTolerance(PIDConstants.ABS_TOLERANCE);
-    	
+    
     	platformOrStepOffset = true;
     	
     	//TODO: ALTER FOR DEFNED NUM OF ENCODERS
@@ -68,9 +70,14 @@ public class ChainLiftSubsystem extends PIDSubsystem {
             encoders[x / 2].setDistancePerPulse(PIDConstants.ENCODER_DISTANCE_PER_PULSE);
         }
         
+        /* issue see intake left subsystem
+        pid = FishyRobot2015.chainLiftSubsystem.getPIDController();
+    	pid.setAbsoluteTolerance(PIDConstants.ABS_TOLERANCE);
+    	*/
         
         limitMax = new DigitalInput(RobotMap.CHAIN_LIFT.MAX_LIM_SWITCH);
         limitReset = new DigitalInput(RobotMap.CHAIN_LIFT.RESET_LIM_SWITCH);
+        
 
     }
 	
