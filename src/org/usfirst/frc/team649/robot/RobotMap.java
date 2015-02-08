@@ -23,38 +23,47 @@ public class RobotMap {
 	}
 	
 	public static final class DRIVE_TRAIN {
-		public static final int[] MOTORS = new int[] {7,6,5,4};
-		// indexes 0,1 are right side
-		//indexes 2,3 are left side
-        public static final int[] ENCODERS = new int[]{0, 1, 2, 3};
+		
+		public static final int[] MOTORS = new int[] {7,6,5,4}; 
+        public static final int[] ENCODERS = new int[]{3, 4, 6, 7};
         public static final int GRYO = 0;
 
 	}
 	
 	public static final class CHAIN_LIFT {
 		public static final int[] MOTORS = new int[] {0,1};
-        public static final int[] ENCODERS = new int[]{2, 3};
-		public static final int RESET_LIM_SWITCH = 1;
-		public static final int MAX_LIM_SWITCH = 0;
+        public static final int[] ENCODERS = new int[]{8, 9, 10, 11};
+		public static final int RESET_LIM_SWITCH = 0;
+		public static final int MAX_LIM_SWITCH = 1;
 
 
 	}
 	
-	public static final class GRABBER {
-		//FOR RIGHT AND LEFT
-		
-		//0 and 1 are RIGHT....2 and 3 are LEFT    (roller and then arm)
-		public static final int[] MOTORS = new int[] {9, 10, 12, 13};
-		public static final int[] POTS = new int[] {0,1};
-		public static final int LIMIT_SWITCH_IN_RIGHT = 0;
-		public static final int LIMIT_SWITCH_IN_LEFT = 1;
-		
-		public static final class PIDConstants{
-			public static final double P = 0.0;
-			public static final double I = 0.0;
-			public static final double D = 0.0;
-			public static final double ABS_TOLERANCE = 0;
-		}
+	public static final class LEFT_GRABBER {
+		public static final int ROLLER_MOTOR = 12;
+		public static final int ARM_MOTOR = 11;
+		public static final int POT = 200;
+		public static final int LIMIT_SWITCH = 111;
 	}
-
+	
+	public static final class RIGHT_GRABBER {
+		public static final int ROLLER_MOTOR = 2;
+		public static final int ARM_MOTOR = 3;
+		public static final int POT = 115;
+		public static final int LIMIT_SWITCH = 123;
+	}
+	
+	public static final class AUTO_WINCH {
+		public static final int MOTOR = 8;
+		public static final int LIM = 2;
+		public static final int SERVO = 3;
+		
+	}
+	
+	public static final class CONTAINER_GRABBER {
+		public static final int PISTON_1_FORWARD_CHANNEL = 0;
+		public static final int PISTON_1_REVERSE_CHANNEL = 1;
+		public static final int PISTON_2_FORWARD_CHANNEL = 2;
+		public static final int PISTON_2_REVERSE_CHANNEL = 3;
+	}
 }

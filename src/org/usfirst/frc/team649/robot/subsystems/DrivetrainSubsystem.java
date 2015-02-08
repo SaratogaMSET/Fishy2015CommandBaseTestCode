@@ -1,10 +1,8 @@
 package org.usfirst.frc.team649.robot.subsystems;
 
-import java.util.Vector;
 
 import org.usfirst.frc.team649.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.PIDController;
@@ -12,9 +10,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
@@ -89,12 +85,7 @@ public class DrivetrainSubsystem extends PIDSubsystem implements PIDSource, PIDO
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
-    
 
-    public boolean isMotorRamping() {
-    	return RampingConstants.rampMotors;
-    }
-    
     public void driveFwdRot(double fwd, double rot) {
         double left = fwd + rot, right = fwd - rot;
         double max = Math.max(1, Math.max(Math.abs(left), Math.abs(right)));

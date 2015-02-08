@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team649.robot.commands.CommandBase;
+import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem;
+import org.usfirst.frc.team649.robot.subsystems.DrivetrainSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +26,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
 	
-public static CommandBase commandBase = new CommandBase();
+//public static CommandBase commandBase = new CommandBase();
+	
+	public DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
+	public ChainLiftSubsystem chainLiftSubsystem = new ChainLiftSubsystem();
 	
 	public void robotInit() {
         // instantiate the command used for the autonomous period
@@ -67,18 +71,18 @@ public static CommandBase commandBase = new CommandBase();
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
        // commandBase.driveForwardRotate(commandBase.oi.driver.getDriveForward(), commandBase.oi.driver.getDriveRotation()).start();
-        if(commandBase.oi.operator.isIntakeButtonPressed()) {
-        	commandBase.turnWithPIDCommand(90).start();
-        }
-        if(commandBase.oi.operator.isScoreAllButtonPressed()) {
-        	commandBase.driveForwardRotate(1, 0).start();
-        }
-        if(commandBase.oi.operator.isStepButtonPressed()) {
-        	commandBase.driveSetDistanceWithPID(120).start();
-        }
-        SmartDashboard.putNumber("Gyro", commandBase.drivetrainSubsystem.gyro.getAngle());
-        SmartDashboard.putNumber("Enc right", commandBase.drivetrainSubsystem.encoders[0].getDistance());
-        SmartDashboard.putNumber("Enc left", commandBase.drivetrainSubsystem.encoders[1].getDistance());
+//        if(commandBase.oi.operator.isIntakeButtonPressed()) {
+//        	commandBase.turnWithPIDCommand(90).start();
+//        }
+//        if(commandBase.oi.operator.isScoreAllButtonPressed()) {
+//        	commandBase.driveForwardRotate(1, 0).start();
+//        }
+//        if(commandBase.oi.operator.isStepButtonPressed()) {
+//        	commandBase.driveSetDistanceWithPID(120).start();
+//        }
+//        SmartDashboard.putNumber("Gyro", commandBase.drivetrainSubsystem.gyro.getAngle());
+//        SmartDashboard.putNumber("Enc right", commandBase.drivetrainSubsystem.encoders[0].getDistance());
+//        SmartDashboard.putNumber("Enc left", commandBase.drivetrainSubsystem.encoders[1].getDistance());
     }
     
     /**
