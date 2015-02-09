@@ -7,17 +7,11 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
 public class AutoWinchSubsystem extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
-	Victor motor;
-	DigitalInput hal;
-	Servo servo;
+	public Victor motor;
+	public DigitalInput hal;
+	public Servo servo;
 	
 	public static final double WINCH_DRIVE_POWER = .4;
 	public static final double WINCH_OFF_POWER = 0.0;
@@ -25,10 +19,9 @@ public class AutoWinchSubsystem extends Subsystem {
 	public static final double SERVO_RELEASE_STATE = 159;
 	
 	public AutoWinchSubsystem() {
-		//motor = new Victor(RobotMap.AUTO_WINCH.MOTOR);
-		hal = new DigitalInput(RobotMap.AUTO_WINCH.LIM);
+		motor = new Victor(RobotMap.AUTO_WINCH.MOTOR);
 		servo = new Servo(RobotMap.AUTO_WINCH.SERVO);
-		servo.setAngle(SERVO_DEFAULT_STATE);
+		hal = new DigitalInput(RobotMap.AUTO_WINCH.LIM);
 	}
 	
 	public void setPower(double power) {

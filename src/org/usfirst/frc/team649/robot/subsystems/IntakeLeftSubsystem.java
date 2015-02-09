@@ -59,6 +59,10 @@ public class IntakeLeftSubsystem extends PIDSubsystem {
 		return pot.get();
 	}
 	
+	public boolean isTouchPressed(){
+		return !touchSensor.get();
+	}
+	
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub

@@ -1,17 +1,12 @@
 
 package org.usfirst.frc.team649.robot.subsystems;
 
-import org.usfirst.frc.team649.robot.FishyRobot2015;
 import org.usfirst.frc.team649.robot.RobotMap;
-import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem.PIDConstants;
-
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
@@ -54,6 +49,7 @@ public class IntakeRightSubsystem extends PIDSubsystem {
     	pot = new AnalogPotentiometer(RobotMap.RIGHT_GRABBER.POT);
     	
     	//motors
+
     	roller = new Victor(RobotMap.RIGHT_GRABBER.ROLLER_MOTOR);
     	arm = new Victor(RobotMap.RIGHT_GRABBER.ARM_MOTOR);
     	
@@ -67,6 +63,10 @@ public class IntakeRightSubsystem extends PIDSubsystem {
 	
 	public double getPot(){
 		return pot.get();
+	}
+	
+	public boolean isButtonPressed(){
+		return !touchSensor.get();
 	}
     
 

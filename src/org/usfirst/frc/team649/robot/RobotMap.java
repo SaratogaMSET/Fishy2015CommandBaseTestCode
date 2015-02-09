@@ -24,39 +24,40 @@ public class RobotMap {
 	
 	public static final class DRIVE_TRAIN {
 		
-		public static final int[] MOTORS = new int[] {7,6,5,4}; 
+		public static final int[] MOTORS = new int[] {1,0,5,4}; //changed
         public static final int[] ENCODERS = new int[]{3, 4, 6, 7};
         public static final int GRYO = 0;
 
 	}
 	
 	public static final class CHAIN_LIFT {
-		public static final int[] MOTORS = new int[] {0,1};
+		public static final int[] MOTORS = new int[] {2,12}; //changed
         public static final int[] ENCODERS = new int[]{8, 9, 10, 11};
-		public static final int RESET_LIM_SWITCH = 0;
-		public static final int MAX_LIM_SWITCH = 1;
+		public static final int RESET_LIM_SWITCH = 2;
+		public static final int MAX_LIM_SWITCH = 14;
 
 
 	}
 	
 	public static final class LEFT_GRABBER {
-		public static final int ROLLER_MOTOR = 2;
+		public static final int ROLLER_MOTOR = 7;
 		public static final int ARM_MOTOR = 3;
 		public static final int POT = 1;
-		public static final int LIMIT_SWITCH = 2;
+		public static final int LIMIT_SWITCH = 0;
 	}
 	
+	//NO PORT 11
 	public static final class RIGHT_GRABBER {
-		public static final int ROLLER_MOTOR = 8;
-		public static final int ARM_MOTOR = 9;
+		public static final int ROLLER_MOTOR = 6;
+		public static final int ARM_MOTOR = 13;
 		public static final int POT = 2;
-		public static final int LIMIT_SWITCH = 12;
+		public static final int LIMIT_SWITCH = 1;
 	}
 	
 	public static final class AUTO_WINCH {
-		public static final int MOTOR = 12;
-		public static final int LIM = 13;
-		public static final int SERVO = 11;
+		public static final int MOTOR = 14;
+		public static final int LIM = 16;
+		public static final int SERVO = 15;
 		
 	}
 	
