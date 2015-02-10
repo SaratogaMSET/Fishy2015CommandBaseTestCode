@@ -21,7 +21,7 @@ public class ChainLiftSubsystem extends PIDSubsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	Victor[] motors;
+	public Victor[] motors;
 	public Encoder[] encoders;
 	PIDController pid;
 	DigitalInput limitMax;

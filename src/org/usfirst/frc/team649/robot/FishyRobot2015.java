@@ -15,6 +15,7 @@ import org.usfirst.frc.team649.robot.subsystems.IntakeLeftSubsystem;
 import org.usfirst.frc.team649.robot.subsystems.IntakeRightSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -38,6 +39,11 @@ public class FishyRobot2015 extends IterativeRobot {
 	public static AutoWinchSubsystem autoWinchSubsystem;
 	public static ContainerGrabberSubsystem containerGrabberSubsystem;
 	public static CameraSubsystem cameraSubsystem;
+	public SmartDashboard sd;
+	
+	
+	Servo test;
+	
 	
 	public SendableChooser autoChooser;
 	public Command autoCommand;
@@ -53,9 +59,10 @@ public class FishyRobot2015 extends IterativeRobot {
     	intakeLeftSubsystem = new IntakeLeftSubsystem();
     	intakeRightSubsystem = new IntakeRightSubsystem();
     	autoWinchSubsystem = new AutoWinchSubsystem();
-    	containerGrabberSubsystem = new ContainerGrabberSubsystem();
+    	//containerGrabberSubsystem = new ContainerGrabberSubsystem();
     //	cameraSubsystem = new CameraSubsystem();
     	oi = new OI();
+    	
     	
     	autoChooser = new SendableChooser();
     	autoChooser.addObject("Debugger Mode", "debugger mode");
@@ -74,6 +81,22 @@ public class FishyRobot2015 extends IterativeRobot {
     	//SmartDashboard.putData("Cam", (Sendable) commandBase.cameraSubsystem.cam);
     	//cam must be configured from smartdashboard
     	
+    	LiveWindow.addActuator("IntakeLeftSubsystem", "roller", intakeLeftSubsystem.roller);
+    	LiveWindow.addActuator("IntakeLeftSubsystem", "arm", intakeLeftSubsystem.arm);
+    	
+    	LiveWindow.addActuator("IntakeRightSubsystem", "roller", intakeRightSubsystem.roller);
+    	LiveWindow.addActuator("IntakeRightSubsystem", "arm", intakeRightSubsystem.arm);
+    	
+    	LiveWindow.addActuator("ChainLiftSubsystem", "motor1", chainLiftSubsystem.motors[0]);
+    	LiveWindow.addActuator("ChainLiftSubsystem", "motor2", chainLiftSubsystem.motors[1]);
+    	LiveWindow.addSensor("ChainLiftSubsystem", "Encoder1", chainLiftSubsystem.encoders[0]);
+    	LiveWindow.addSensor("ChainLiftSubsystem", "Encoder1", chainLiftSubsystem.encoders[1]);
+    	
+    
+    	LiveWindow.addActuator("DrivetrainSubsystem", "leftmotor1", drivetrainSubsystem.motors[0]);
+    	LiveWindow.addActuator("DrivetrainSubsystem", "leftmotor2", drivetrainSubsystem.motors[1]);
+    	LiveWindow.addActuator("DrivetrainSubsystem", "rightmotor1", drivetrainSubsystem.motors[2]);
+    	LiveWindow.addActuator("DrivetrainSubsystem", "rightmotor2", drivetrainSubsystem.motors[3]);
     }
 	
 	public void disabledPeriodic() {
@@ -114,9 +137,8 @@ public class FishyRobot2015 extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {
+	public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
         
         if (oi.operator.isIntakeButtonPressed()){
         	new IntakeTote().start();
@@ -130,5 +152,6 @@ public class FishyRobot2015 extends IterativeRobot {
     public void testPeriodic() {
     	System.out.println("IN TEST MODE");
         LiveWindow.run();
+        
     }
 }

@@ -21,7 +21,7 @@ public class AutoWinchSubsystem extends Subsystem {
 	public AutoWinchSubsystem() {
 		motor = new Victor(RobotMap.AUTO_WINCH.MOTOR);
 		servo = new Servo(RobotMap.AUTO_WINCH.SERVO);
-		hal = new DigitalInput(RobotMap.AUTO_WINCH.LIM);
+		//hal = new DigitalInput(RobotMap.AUTO_WINCH.LIM);
 	}
 	
 	public void setPower(double power) {
@@ -33,7 +33,7 @@ public class AutoWinchSubsystem extends Subsystem {
 	}
 	
 	public boolean isWinchComplete() {
-		return hal.get();
+		return true; //hal.get();
 	}
 	
 	
