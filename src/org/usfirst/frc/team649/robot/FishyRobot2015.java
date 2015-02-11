@@ -5,6 +5,8 @@ import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveForwardRot
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveSetDistanceWithPID;
 import org.usfirst.frc.team649.robot.commands.grabbercommands.IntakeTote;
 import org.usfirst.frc.team649.robot.commands.grabbercommands.RunRoller;
+import org.usfirst.frc.team649.robot.commands.lift.FinishRaiseTote;
+import org.usfirst.frc.team649.robot.commands.lift.RaiseToteToIntermediateLevel;
 import org.usfirst.frc.team649.robot.commands.lift.RunLift;
 import org.usfirst.frc.team649.robot.subsystems.AutoWinchSubsystem;
 import org.usfirst.frc.team649.robot.subsystems.CameraSubsystem;
@@ -19,6 +21,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -29,7 +32,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
+
 public class FishyRobot2015 extends IterativeRobot {
+	
+	public NetworkTable table;
 
 	public static OI oi;
 	public static DrivetrainSubsystem drivetrainSubsystem;
@@ -39,16 +46,14 @@ public class FishyRobot2015 extends IterativeRobot {
 	public static AutoWinchSubsystem autoWinchSubsystem;
 	public static ContainerGrabberSubsystem containerGrabberSubsystem;
 	public static CameraSubsystem cameraSubsystem;
-	public SmartDashboard sd;
-	
-	
-	Servo test;
 	
 	
 	public SendableChooser autoChooser;
 	public Command autoCommand;
 	public String autoMode;
 	public boolean driveLeftEncoderState, driveRightEncoderState, chainEncoderState;
+	
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -63,6 +68,11 @@ public class FishyRobot2015 extends IterativeRobot {
     //	cameraSubsystem = new CameraSubsystem();
     	oi = new OI();
     	
+    	table = NetworkTable.getTable("datatable");
+    	
+    	table.putString("Text Input", "if this works i will die");
+    	
+    	System.out.println("" + table.containsKey("Text Input"));
     	
     	autoChooser = new SendableChooser();
     	autoChooser.addObject("Debugger Mode", "debugger mode");
@@ -140,8 +150,13 @@ public class FishyRobot2015 extends IterativeRobot {
 	public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
+        
         if (oi.operator.isIntakeButtonPressed()){
-        	new IntakeTote().start();
+        	new RaiseToteToIntermediateLevel(true).start();
+        }
+        
+        if (oi.operator.isPurgeButtonPressed()){
+        	new FinishRaiseTote(true).start();
         }
     }
     

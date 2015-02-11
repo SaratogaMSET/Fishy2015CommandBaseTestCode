@@ -31,7 +31,7 @@ public class RobotMap {
 	}
 	
 	public static final class CHAIN_LIFT {
-		public static final int[] MOTORS = new int[] {2,12}; //changed
+		public static final int[] MOTORS = new int[] {6,7}; //changed
         public static final int[] ENCODERS = new int[]{8, 9, 10, 11};
 		public static final int RESET_LIM_SWITCH = 2;
 		public static final int MAX_LIM_SWITCH = 14;
@@ -40,7 +40,7 @@ public class RobotMap {
 	}
 	
 	public static final class LEFT_GRABBER {
-		public static final int ROLLER_MOTOR = 7;
+		public static final int ROLLER_MOTOR = 2;
 		public static final int ARM_MOTOR = 3;
 		public static final int POT = 1;
 		public static final int LIMIT_SWITCH = 0;
@@ -48,7 +48,7 @@ public class RobotMap {
 	
 	//NO PORT 11
 	public static final class RIGHT_GRABBER {
-		public static final int ROLLER_MOTOR = 6;
+		public static final int ROLLER_MOTOR = 12;
 		public static final int ARM_MOTOR = 13;
 		public static final int POT = 2;
 		public static final int LIMIT_SWITCH = 1;
