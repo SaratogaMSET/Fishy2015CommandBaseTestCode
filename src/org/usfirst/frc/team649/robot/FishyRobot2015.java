@@ -5,6 +5,7 @@ import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveForwardRot
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveSetDistanceWithPID;
 import org.usfirst.frc.team649.robot.commands.grabbercommands.IntakeTote;
 import org.usfirst.frc.team649.robot.commands.grabbercommands.RunRoller;
+import org.usfirst.frc.team649.robot.commands.lift.ChangeOffsetHeight;
 import org.usfirst.frc.team649.robot.commands.lift.FinishRaiseTote;
 import org.usfirst.frc.team649.robot.commands.lift.RaiseToteToIntermediateLevel;
 import org.usfirst.frc.team649.robot.commands.lift.RunLift;
@@ -87,6 +88,11 @@ public class FishyRobot2015 extends IterativeRobot {
     	//autonomousCommand = new ExampleCommand();
     	SmartDashboard.putData(Scheduler.getInstance());
     	
+    	SmartDashboard.putData("Chain Lift Motor1", chainLiftSubsystem.motors[0]);
+    	SmartDashboard.putData("Chain Lift Motor2", chainLiftSubsystem.motors[1]);
+    	SmartDashboard.putData("Chain Lift Encoder1", chainLiftSubsystem.encoders[0]);
+    	
+    	
     	//idk if this works
     	//SmartDashboard.putData("Cam", (Sendable) commandBase.cameraSubsystem.cam);
     	//cam must be configured from smartdashboard
@@ -132,8 +138,6 @@ public class FishyRobot2015 extends IterativeRobot {
         // this line or comment it out.
     	
     	//FIGURE OUT HOW TO CLEAR SMARTDASHBOARD REMOTELY
-    	
-    	
     }
 
     /**
@@ -150,14 +154,31 @@ public class FishyRobot2015 extends IterativeRobot {
 	public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        
+        SmartDashboard.putData("Encoder1", chainLiftSubsystem.encoders[0]);
+        SmartDashboard.putData("Encoder2", chainLiftSubsystem.encoders[1]);
         if (oi.operator.isIntakeButtonPressed()){
         	new RaiseToteToIntermediateLevel(true).start();
         }
-        
-        if (oi.operator.isPurgeButtonPressed()){
+        //(oi.operator.isPurgeButtonPressed())
+        if(oi.operator.isLowerToteButtonPressed()) {
         	new FinishRaiseTote(true).start();
         }
+        if(oi.operator.isStepButtonPressed()) {
+        	new ChangeOffsetHeight(true).start();
+        }
+        if(oi.operator.isScoreAllButtonPressed()) {
+        	new ChangeOffsetHeight(false).start();
+        }
+        if (oi.operator.isPurgeButtonPressed()){
+        	new FinishRaiseTote(false).start();
+        }
+        
+        SmartDashboard.putNumber("Setpoint Height", chainLiftSubsystem.setpointHeight);
+
+        SmartDashboard.putNumber("offest Height", chainLiftSubsystem.offsetHeight);
+        
+
+        SmartDashboard.putNumber("Goal Height", chainLiftSubsystem.setpointHeight + chainLiftSubsystem.offsetHeight);
     }
     
 

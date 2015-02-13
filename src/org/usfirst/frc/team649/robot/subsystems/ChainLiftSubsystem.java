@@ -35,14 +35,14 @@ public class ChainLiftSubsystem extends PIDSubsystem {
 	
 	public static class PIDConstants {
 		//PID
-		public static final double P_VALUE = 0.0;
+		public static final double P_VALUE = .5;
 		public static final double I_VALUE = 0.0;
 		public static final double D_VALUE = 0.0;
-		public static final double ENCODER_DISTANCE_PER_PULSE = 0;
-		public static final double ABS_TOLERANCE = 0;
+		public static final double ENCODER_DISTANCE_PER_PULSE = .01;
+		public static final double ABS_TOLERANCE = 5;
 		//In inches
 		public static final double STORE_TO_STEP_LEVEL_DIFFERENCE = 5.0;
-		public static final double STORE_TO_INTERMEDIATE_DIFFERENCE = 12.0;
+		public static final double STORE_TO_INTERMEDIATE_DIFFERENCE = 33.0;
 		public static final double INTERMEDIATE_TO_STORE_DIFFERENCE = 3;
 		public static final double CONTAINER_PICK_UP_RAISE_HEIGHT = 18;
 		public static final double CONTAINER_REGRIP_LOWER_HEIGHT = -12;
@@ -67,7 +67,8 @@ public class ChainLiftSubsystem extends PIDSubsystem {
     	encoders = new Encoder[RobotMap.CHAIN_LIFT.ENCODERS.length / 2];
         for (int x = 0; x < RobotMap.CHAIN_LIFT.ENCODERS.length; x += 2) {
             encoders[x / 2] = new Encoder(RobotMap.CHAIN_LIFT.ENCODERS[x], RobotMap.CHAIN_LIFT.ENCODERS[x + 1], x == 0, EncodingType.k2X);
-            encoders[x / 2].setDistancePerPulse(PIDConstants.ENCODER_DISTANCE_PER_PULSE);
+            encoders[x / 2].setDistancePerPulse(PIDConstants.ENCODER_DISTANCE_PER_PULSE); //TODO
+            encoders[x / 2].setReverseDirection(false); //TODO
         }
         
         /* issue see intake left subsystem
@@ -101,7 +102,7 @@ public class ChainLiftSubsystem extends PIDSubsystem {
         for (int i = 0; i < numEncoders; i++) {
             totalVal += encoders[i].getDistance();
         }
-        return totalVal / numEncoders;    	
+        return totalVal;    			
     }
 
     public void resetEncoders() {
