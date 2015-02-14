@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team649.robot;
 
+import org.usfirst.frc.team649.robot.commandgroups.Debug;
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveForwardRotate;
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveSetDistanceWithPID;
 import org.usfirst.frc.team649.robot.commands.grabbercommands.IntakeTote;
@@ -160,20 +161,8 @@ public class FishyRobot2015 extends IterativeRobot {
         new RunLift(oi.operatorJoystick.getY()).start();
         
         if (oi.operator.isIntakeButtonPressed()){
-        	new RaiseToteToIntermediateLevel(true).start();
-        }
-        //(oi.operator.isPurgeButtonPressed())
-        if(oi.operator.isLowerToteButtonPressed()) {
-        	new FinishRaiseTote(true).start();
-        }
-        if(oi.operator.isStepButtonPressed()) {
-        	new ChangeOffsetHeight(true).start();
-        }
-        if(oi.operator.isScoreAllButtonPressed()) {
-        	new ChangeOffsetHeight(false).start();
-        }
-        if (oi.operator.isPurgeButtonPressed()){
-        	new FinishRaiseTote(false).start();
+        	//new RaiseToteToIntermediateLevel(true).start();
+        	new Debug().start();
         }
         
         SmartDashboard.putNumber("Setpoint Height", chainLiftSubsystem.setpointHeight);
