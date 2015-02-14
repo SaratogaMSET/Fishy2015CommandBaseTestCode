@@ -3,8 +3,8 @@ package org.usfirst.frc.team649.robot;
 
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveForwardRotate;
 import org.usfirst.frc.team649.robot.commands.drivetraincommands.DriveSetDistanceWithPID;
-import org.usfirst.frc.team649.robot.commands.grabbercommands.IntakeTote;
-import org.usfirst.frc.team649.robot.commands.grabbercommands.RunRoller;
+import org.usfirst.frc.team649.robot.commands.intakecommands.IntakeTote;
+import org.usfirst.frc.team649.robot.commands.intakecommands.RunRoller;
 import org.usfirst.frc.team649.robot.commands.lift.ChangeOffsetHeight;
 import org.usfirst.frc.team649.robot.commands.lift.FinishRaiseTote;
 import org.usfirst.frc.team649.robot.commands.lift.RaiseToteToIntermediateLevel;

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team649.robot.commands.grabbercommands;
+package org.usfirst.frc.team649.robot.commands.intakecommands;
 
 import org.usfirst.frc.team649.robot.FishyRobot2015;
 import org.usfirst.frc.team649.robot.subsystems.IntakeLeftSubsystem;
@@ -47,7 +47,8 @@ public class SetIntakeArmPosition extends Command {
 	@Override
 	protected boolean isFinished() {
 		//when both have reached
-		return true; //FishyRobot2015.commandBase.intakeLeftSubsystem.getPot() == relevantSetpointLeft && FishyRobot2015.commandBase.intakeRightSubsystem.getPot() == relevantSetpointRight;
+		//End arm pid when limits are pressed
+		return true; //((FishyRobot2015.intakeLeftSubsystem.getPot() == relevantSetpointLeft && FishyRobot2015.intakeRightSubsystem.getPot() == relevantSetpointRight) || ());
 	}
 
 	@Override

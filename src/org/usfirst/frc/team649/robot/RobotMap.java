@@ -43,7 +43,8 @@ public class RobotMap {
 		public static final int ROLLER_MOTOR = 2;
 		public static final int ARM_MOTOR = 3;
 		public static final int POT = 1;
-		public static final int LIMIT_SWITCH = 8;
+		public static final int TOTE_LIMIT_SWITCH = 8;
+		public static final int ARM_LIMIT_SWITCH = 19;
 	}
 	
 	//NO PORT 11
@@ -51,7 +52,9 @@ public class RobotMap {
 		public static final int ROLLER_MOTOR = 12;
 		public static final int ARM_MOTOR = 13;
 		public static final int POT = 2;
-		public static final int LIMIT_SWITCH = 9;
+		public static final int TOTE_LIMIT_SWITCH = 9;
+		public static final int ARM_LIMIT_SWITCH = 20;
+
 	}
 	
 	public static final class AUTO_WINCH {
