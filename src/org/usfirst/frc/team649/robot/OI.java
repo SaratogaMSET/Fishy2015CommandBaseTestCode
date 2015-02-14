@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private Joystick operatorJoystick;
-	private Joystick horizontal;
-	private Joystick vertical;
+	public Joystick operatorJoystick;
+	public Joystick horizontal;
+	public Joystick vertical;
 	public Operator operator;
 	public Driver driver;
 

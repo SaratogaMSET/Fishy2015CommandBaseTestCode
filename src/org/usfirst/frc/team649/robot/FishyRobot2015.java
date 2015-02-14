@@ -156,6 +156,9 @@ public class FishyRobot2015 extends IterativeRobot {
         
         SmartDashboard.putData("Encoder1", chainLiftSubsystem.encoders[0]);
         SmartDashboard.putData("Encoder2", chainLiftSubsystem.encoders[1]);
+        
+        new RunLift(oi.operatorJoystick.getY()).start();
+        
         if (oi.operator.isIntakeButtonPressed()){
         	new RaiseToteToIntermediateLevel(true).start();
         }
