@@ -2,7 +2,7 @@ package org.usfirst.frc.team649.robot.commandgroups;
 
 import org.usfirst.frc.team649.robot.FishyRobot2015;
 import org.usfirst.frc.team649.robot.commands.containergrabbercommands.ClampContainerGrabber;
-import org.usfirst.frc.team649.robot.commands.grabbercommands.IntakeTote;
+import org.usfirst.frc.team649.robot.commands.intakecommands.IntakeTote;
 import org.usfirst.frc.team649.robot.commands.lift.ChangeLiftHeight;
 import org.usfirst.frc.team649.robot.commands.lift.FinishRaiseTote;
 import org.usfirst.frc.team649.robot.subsystems.ChainLiftSubsystem;
@@ -32,16 +32,16 @@ public class FullContainerAndFirstToteSequence extends CommandGroup {
 
 		// pull in tote and unclamp
 		addSequential(new IntakeTote());
-		addSequential(new WaitCommand(200));
+		addSequential(new WaitCommand(.2));
 		addSequential(new ClampContainerGrabber(false));
-		addSequential(new WaitCommand(100));
+		addSequential(new WaitCommand(.1));
 		// go down and regrip
 		addSequential(new ChangeLiftHeight(ChainLiftSubsystem.PIDConstants.CONTAINER_REGRIP_LOWER_HEIGHT));
-		addSequential(new WaitCommand(200));
+		addSequential(new WaitCommand(.2));
 		addSequential(new ClampContainerGrabber(true));
 		// continue to drive height offset (you should be at intermediate step
 		// here), hopefully you catch the tote
-		addSequential(new WaitCommand(200));
+		addSequential(new WaitCommand(.2));
 		addSequential(new FinishRaiseTote(true));
 	}
 }

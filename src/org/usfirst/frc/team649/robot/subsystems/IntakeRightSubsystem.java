@@ -20,7 +20,8 @@ public class IntakeRightSubsystem extends PIDSubsystem {
 	public Victor roller, arm;
 	public Potentiometer pot;
 	public PIDController pid;
-	public DigitalInput touchSensor;
+	public DigitalInput toteLimit;
+	public DigitalInput armLimit;
 	public static final double INTAKE_ROLLER_SPEED = 0.4;
 
 	public static final class PIDConstants{
@@ -53,7 +54,8 @@ public class IntakeRightSubsystem extends PIDSubsystem {
     	roller = new Victor(RobotMap.RIGHT_GRABBER.ROLLER_MOTOR);
     	arm = new Victor(RobotMap.RIGHT_GRABBER.ARM_MOTOR);
     	
-    	touchSensor = new DigitalInput(RobotMap.RIGHT_GRABBER.LIMIT_SWITCH);
+    	toteLimit = new DigitalInput(RobotMap.RIGHT_GRABBER.TOTE_LIMIT_SWITCH);
+    	armLimit = new DigitalInput(RobotMap.RIGHT_GRABBER.ARM_LIMIT_SWITCH);
     }
 	
 	public void initDefaultCommand() {
@@ -65,11 +67,13 @@ public class IntakeRightSubsystem extends PIDSubsystem {
 		return pot.get();
 	}
 	
-	public boolean isButtonPressed(){
-		return !touchSensor.get();
+	public boolean isToteLimitPressed(){
+		return !toteLimit.get();
 	}
     
-
+	public boolean isArmLimitPressed() {
+		return armLimit.get();
+	}
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub

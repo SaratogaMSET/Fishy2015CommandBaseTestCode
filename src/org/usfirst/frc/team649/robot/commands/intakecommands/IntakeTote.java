@@ -1,4 +1,4 @@
-package org.usfirst.frc.team649.robot.commands.grabbercommands;
+package org.usfirst.frc.team649.robot.commands.intakecommands;
 
 import org.usfirst.frc.team649.robot.FishyRobot2015;
 import org.usfirst.frc.team649.robot.subsystems.IntakeLeftSubsystem;
@@ -20,10 +20,10 @@ public class IntakeTote extends Command {
 		// TODO Auto-generated method stub
 		
 		//so the tote will only stop moving when both triggers have been hit
-		if (FishyRobot2015.intakeLeftSubsystem.isTouchPressed()){
+		if (FishyRobot2015.intakeLeftSubsystem.isToteLimitPressed()){
 			FishyRobot2015.intakeLeftSubsystem.roller.set(0);
 		}
-		if (FishyRobot2015.intakeRightSubsystem.isButtonPressed()){
+		if (FishyRobot2015.intakeRightSubsystem.isToteLimitPressed()){
 			FishyRobot2015.intakeRightSubsystem.roller.set(0);
 		}
 	}
@@ -31,7 +31,7 @@ public class IntakeTote extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return FishyRobot2015.intakeLeftSubsystem.isTouchPressed() && FishyRobot2015.intakeRightSubsystem.isButtonPressed();
+		return FishyRobot2015.intakeLeftSubsystem.isToteLimitPressed() && FishyRobot2015.intakeRightSubsystem.isToteLimitPressed();
 	}
 
 	@Override
